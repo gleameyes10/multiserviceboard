@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+    <title>Team Text Board</title>
+</head>
+<body>
+<h1>Team Text Board</h1>
+<form method="post">
+    <textarea name="content" rows="3" cols="40"></textarea><br>
+    <button type="submit">Post</button>
+</form>
+<ul>
+{% for id, content in messages %}
+    <li>{{ content }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
+
