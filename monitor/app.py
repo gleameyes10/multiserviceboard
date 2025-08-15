@@ -5,7 +5,7 @@ import logging
 
 app = Flask(__name__)
 
-# Logging setup — default to ./logs if LOG_DIR not set
+
 LOG_DIR = os.environ.get("LOG_DIR", "./logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 logging.basicConfig(

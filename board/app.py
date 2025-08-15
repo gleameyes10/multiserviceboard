@@ -5,7 +5,7 @@ import logging
 
 app = Flask(__name__)
 
-# Detect if running inside Docker (simple heuristic)
+
 IN_DOCKER = os.path.exists("/.dockerenv")
 
 # Logging setup
@@ -36,7 +36,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Ensure DB exists
+
 init_db()
 
 @app.before_request

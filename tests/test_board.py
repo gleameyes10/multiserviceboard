@@ -10,13 +10,11 @@ def test_client():
         yield client
 
 def test_post_message(test_client):
-    # Allow custom test message via environment variable
     custom_message = os.environ.get("TEST_MESSAGE", "Hello Test")
 
     response = test_client.post("/", data={"content": custom_message})
-    assert response.status_code == 302  # Redirect after posting
+    assert response.status_code == 302
 
-    # Verify the message is stored in the database
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("SELECT content FROM messages ORDER BY id DESC LIMIT 1")
@@ -28,5 +26,5 @@ def test_post_message(test_client):
 def test_retrieve_message_from_db(test_client):
     response = test_client.get("/")
     assert response.status_code == 200
-    assert b"<html" in response.data  # crude check that page rendered
+    assert b"<html" in response.data 
 
